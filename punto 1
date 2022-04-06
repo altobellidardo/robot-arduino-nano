@@ -1,0 +1,78 @@
+//integrantes: Dardo Altobelli, Santiago Martinez, Francesco Abratte, Ian Freitag, Matias Berardi.
+//fecha: 31/03/2022
+
+/*pines
+echo = D3
+trig = D4
+EnA = D5
+In1 = D6
+in2 = D7
+in3 = D8
+in4 = D9
+EnB = D10
+*/
+
+int led = 2;
+
+int echo = 3;
+int trig = 4;
+
+int EnA = 5;
+int In1 = 6;
+int In2 = 7;
+int In3 = 8;
+int In4 = 9;
+int EnB = 10;
+
+void setup() {
+  pinMode(led,OUTPUT);
+  pinMode(EnA,OUTPUT);
+  pinMode(In1,OUTPUT);
+  pinMode(In2,OUTPUT);
+  pinMode(In3,OUTPUT);
+  pinMode(In4,OUTPUT);
+  pinMode(EnB,OUTPUT);
+}
+
+void avanzar(){
+  analogWrite(EnA,255);
+  analogWrite(EnB,255);
+  digitalWrite(In1,HIGH);
+  digitalWrite(In2,LOW);
+  digitalWrite(In3,HIGH);
+  digitalWrite(In4,LOW);
+}
+
+void retroceder(){
+  analogWrite(EnA,255);
+  analogWrite(EnB,255);
+  digitalWrite(In1,LOW);
+  digitalWrite(In2,HIGH);
+  digitalWrite(In3,LOW);
+  digitalWrite(In4,HIGH);
+}
+
+void derecha(){
+  analogWrite(EnA,255);
+  analogWrite(EnB,0);
+  digitalWrite(In1,HIGH);
+  digitalWrite(In2,LOW);
+  digitalWrite(In3,HIGH);
+  digitalWrite(In4,LOW);
+}
+
+void izquierda(){
+  analogWrite(EnA,0);
+  analogWrite(EnB,255);
+  digitalWrite(In1,HIGH);
+  digitalWrite(In2,LOW);
+  digitalWrite(In3,HIGH);
+  digitalWrite(In4,LOW);
+}
+
+void loop() {
+  avanzar();
+  delay(5000);
+  derecha();
+  delay(600);
+}
