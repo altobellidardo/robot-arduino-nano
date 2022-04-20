@@ -73,6 +73,6 @@ void izquierda(){
 void loop() {
   avanzar();
   delay(5000);
-  derecha();
+  izquierda();
   delay(600);
 }
