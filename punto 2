@@ -25,7 +25,10 @@ int In4 = 9;
 int EnB = 10;
 
 void setup() {
+  Serial.begin(9600);
   pinMode(led,OUTPUT);
+  pinMode(echo,INPUT);
+  pinMode(trig,OUTPUT);
   pinMode(EnA,OUTPUT);
   pinMode(In1,OUTPUT);
   pinMode(In2,OUTPUT);
@@ -52,7 +55,7 @@ void retroceder(){
   digitalWrite(In4,HIGH);
 }
 
-void derecha(){
+void izquierda(){
   analogWrite(EnA,255);
   analogWrite(EnB,0);
   digitalWrite(In1,HIGH);
@@ -61,7 +64,7 @@ void derecha(){
   digitalWrite(In4,LOW);
 }
 
-void izquierda(){
+void derecha(){
   analogWrite(EnA,0);
   analogWrite(EnB,255);
   digitalWrite(In1,HIGH);
@@ -70,21 +73,35 @@ void izquierda(){
   digitalWrite(In4,LOW);
 }
 
+void frenar(){
+  analogWrite(EnA,0);
+  analogWrite(EnB,0);
+}
 void loop() {
-  for (int v = 0; v <= 4; v++){
+  for(int x = 0;x<4;x++){
     avanzar();
-    delay(5000);
-    derecha();
-    delay(600);
-  }
-  derecha();
-  delay(2400);
-  for (int v = 0; v <= 4; v++){
-    avanzar();
-    delay(5000);
+    analogWrite(EnA,230);
+    delay(1500);
+    frenar();
+    delay(200);
     izquierda();
-    delay(600);
+    delay(100);
+    frenar();
+    delay(200);
+  }
+    derecha();
+  delay(800);
+  for(int x = 0;x<4;x++){
+    avanzar();
+    analogWrite(EnA,230);
+    delay(1500);
+    frenar();
+    delay(200);
+    derecha();
+    delay(200);
+    frenar();
+    delay(200);
   }
   derecha();
-  delay(2400);
+  delay(800);
 }
