@@ -24,6 +24,8 @@ int In3 = 8;
 int In4 = 9;
 int EnB = 10;
 
+bool hecho = false
+
 void setup() {
   Serial.begin(9600);
   pinMode(led,OUTPUT);
@@ -79,15 +81,18 @@ void frenar(){
 }
 
 void loop() {
-  for(int x = 0;x<4;x++){
-    avanzar();
-    analogWrite(EnA,230);
-    delay(1500);
-    frenar();
-    delay(200);
-    izquierda();
-    delay(100);
-    frenar();
-    delay(200);
+  while(!hecho){
+    for(int x = 0;x<4;x++){
+      avanzar();
+      analogWrite(EnA,230);
+      delay(1500);
+      frenar();
+      delay(200);
+      izquierda();
+      delay(100);
+      frenar();
+      delay(200);
+    }
+    hecho = true
   }
 }
