@@ -10,6 +10,7 @@
 #define IZQ false
 #define DETECTO true
 #define NO_DETECTO false
+#define VEL 100
 
 void setup() {
   Serial.begin(9600);
@@ -24,8 +25,8 @@ void setup() {
 }
 
 void avanzar(){
-  analogWrite(VEL_MOT_IZQ,120);
-  analogWrite(VEL_MOT_DER,120);
+  analogWrite(VEL_MOT_IZQ,VEL);
+  analogWrite(VEL_MOT_DER,VEL);
   digitalWrite(IN1,LOW);
   digitalWrite(IN2,HIGH);
   digitalWrite(IN3,LOW);
@@ -33,8 +34,8 @@ void avanzar(){
 }
 
 void retroceder(){
-  analogWrite(VEL_MOT_IZQ,120);
-  analogWrite(VEL_MOT_DER,120);
+  analogWrite(VEL_MOT_IZQ,VEL);
+  analogWrite(VEL_MOT_DER,VEL);
   digitalWrite(IN1,HIGH);
   digitalWrite(IN2,LOW);
   digitalWrite(IN3,HIGH);
@@ -44,12 +45,12 @@ void retroceder(){
 void girar_robot (bool sentido){
   if(sentido==IZQ){
     analogWrite(VEL_MOT_IZQ,0);
-    analogWrite(VEL_MOT_DER,120);
+    analogWrite(VEL_MOT_DER,VEL);
     digitalWrite(IN1,LOW);
     digitalWrite(IN2,HIGH);
   }  
   else{  
-    analogWrite(VEL_MOT_IZQ,120);
+    analogWrite(VEL_MOT_IZQ,VEL);
     analogWrite(VEL_MOT_DER,0);
     digitalWrite(IN3,LOW);
     digitalWrite(IN4,HIGH);  
