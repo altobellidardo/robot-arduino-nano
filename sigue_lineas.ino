@@ -68,18 +68,6 @@ void loop(){
   if (!lect_D & !lect_I){
     avanzar();
   }
-  else if (lect_D & lect_I){
-    for (int t; t < 100; t++){
-      lect_I = digitalRead(IRI);
-      lect_D = digitalRead(IRD);
-      if (!lect_D & !lect_I){
-        t = 200;
-      }else{
-        girar_robot(IZQ);
-        delay(1);
-      }
-    }
-  }
   else if (lect_D){
     girar_robot(IZQ);
   }
