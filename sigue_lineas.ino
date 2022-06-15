@@ -71,7 +71,7 @@ void loop(){
   else if (lect_D){
     girar_robot(IZQ);
   }
-  else if (lect_I){
+  else{
     girar_robot(DER);
   }
 }
